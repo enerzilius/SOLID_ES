@@ -1,15 +1,19 @@
 #include <string>
 #include <vector>
 #include "materia.hpp"
+#include "turma.hpp"
 
 using namespace std;
 
 class Aluno {
     int matricula;
     string nome;
-    vector<Materia> materias;
     // ...
 public:
+    string getNome(){
+        return nome;
+    }
+
     float getMediaGeral(int matricula){
         vector<Materia> materias = getMateriasMatriculadas(matricula);
         float media = 0;
@@ -25,6 +29,14 @@ public:
         // pega todas as materias associadas com a matrícula do aluno
         return materiasMatriculadas;
     };
+
+    vector<Turma> getTurmasMatriculadas(){
+        vector<Turma> turmas;
+        //pega todas as turmas aonde o aluno está presente
+        return turmas;
+    }
+
+
 
 
 };

@@ -65,7 +65,7 @@ public:
     //métodos
 };
 ```
-Neste exemplo, o uso da herança não é necessariamente errado, mas segundo o princípio abordado, é preferível utilizar da sseguinte solução:
+Neste exemplo, o uso da herança não é necessariamente errado, mas segundo o princípio abordado, é preferível utilizar a seguinte solução:
 
 ```c++
 #include <string>
@@ -89,8 +89,38 @@ Dessa forma, a relação entre as classes não é estática e é muito mais flex
 
 
 ## Princípio de Segregação de Interfaces
+O Princípio de Segregação de Interfaces é uma espécie de 
+
+
 
 ## Princípio de Demeter
+O Princípio de Demeter consiste, basicamente, em não encadear vários getters ou métodos em sequência. Um contraexeplo desse princípio seria:
+```c++
+string getNomeAlunoMaiorNota(){
+    string nome = "";
+    float maiorNota;
+    for(Turma turma : turmasLecionadas){
+        if(turma.getMaiorNota() > maiorNota){
+            nome = turma.getAlunoMaiorNota.getNome();
+        }
+    }
+    return nome;
+}
+```
+Nesse trecho é bem vísivel o encadeamento de métodos para pegar o nome do aluno com maior nota dentre as turmas lecionadas por certo professor. Para corrigir esse problema, é possível fazer o seguinte:
+```c++
+string getNomeAlunoMaiorNota(){
+    string nome = "";
+    float maiorNota;
+    for(Turma turma : turmasLecionadas){
+        if(turma.getMaiorNota() > maiorNota){
+            nome = turma.getNomeAlunoMaiorNota;
+        }
+    }
+    return nome;
+}
+```
+fonte:[src/professor.hpp](src/professor.hpp)
 
 # Referências
-[]
+[https://engsoftmoderna.info/cap5.html]
