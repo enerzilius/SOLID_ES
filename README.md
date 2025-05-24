@@ -89,7 +89,41 @@ Dessa forma, a relação entre as classes não é estática e é muito mais flex
 
 
 ## Princípio de Segregação de Interfaces
-O Princípio de Segregação de Interfaces é uma espécie de 
+O Princípio de Segregação de Interfaces é uma espécie de Princípio da Responsabilidade Única para interfaces, descrevendo que devemser pequenas e específicas. 
+```c++
+#include "aluno.hpp"
+
+class Aluno{
+public:
+    virtual getNome();
+    virtual getValorBolsa();
+}
+```
+Nesse exemplo, o método getValorBolsa está sendo aplicado a todos os alunos, mesmo que alguns deles não sejam bolsistas. Isso torna a interface maior e menos específica, violando o princípio estudado. Uma alternativa seria:
+```c++
+#include "aluno.hpp"
+
+class Bolsista{
+public:
+    virtual getValorBolsa();
+}
+
+class Aluno
+{
+public:
+    virtual ~Aluno();
+};
+
+class Monitor : public Aluno, public Bolsista
+{
+    public:
+        virtual void helloWorld()
+        {
+            // funcionalidades
+        }
+};
+```
+fonte:[src/interface.hpp](src/interface.hpp)
 
 
 
