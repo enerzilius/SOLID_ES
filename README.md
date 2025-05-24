@@ -44,7 +44,7 @@ vector<Materia> getMateriasMatriculadas(int matricula){
 }
 ```
 fonte:[src/aluno.hpp](src/aluno.hpp)
-  Essa é uma forma um pouco crua de resolver o problema, sem considerar o conceito de turmas para manter a simplicidade do exemplo. Aqui
+Essa é uma forma um pouco crua de resolver o problema, sem considerar o conceito de turmas para manter a simplicidade do exemplo. Aqui
 o método _getMediaGeral_ deixa a parte de pegar as matérias cursadas pelo aluno para o outro método _getMateriasMatriculadas_, lidando apenas com o cálculo da média de todas as matérias do aluno. 
 
 
