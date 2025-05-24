@@ -8,5 +8,6 @@ class Materia {
     string desc;
     // ...
 public:
-    float getAlunos(int matricula);
+    float getAlunos();
+    float getNotaAluno(int matricula);
 };

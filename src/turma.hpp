@@ -1,15 +1,14 @@
 #include <string>
 #include <vector>
+#include "materia.hpp"
 #include "aluno.hpp"
 
 using namespace std;
 
 class Turma {
-    int cod;
-    string desc;
+    Materia materia;
     vector<Aluno> alunos;
     // ...
 public:
-    float getAlunos();
-    float getNotaAluno(int matricula);
+    //métodos
 };

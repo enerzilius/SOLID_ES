@@ -2,7 +2,7 @@
   O objetivo da atividadade é utilizar de códigos de exemplo para demonstrar os alguns dos Princípios de Projeto. Os princípios 
 escolhidos foram:
 - Princípio da Responsabilidade Única
-- Princípio da Substituição de Liskov
+- Prefira Composição a Herança
 - Princípio de Segregação de Interfaces
 - Princípio de Demeter 
   O tema geral dos exemplos será gerenciamento escolar. 
@@ -43,11 +43,50 @@ vector<Materia> getMateriasMatriculadas(int matricula){
     return materiasMatriculadas;
 }
 ```
+fonte:[src/aluno.hpp](src/aluno.hpp)
   Essa é uma forma um pouco crua de resolver o problema, sem considerar o conceito de turmas para manter a simplicidade do exemplo. Aqui
 o método _getMediaGeral_ deixa a parte de pegar as matérias cursadas pelo aluno para o outro método _getMateriasMatriculadas_, lidando apenas com o cálculo da média de todas as matérias do aluno. 
 
 
-## Princípio da substituição de Liskov
+## Prefira Composição a Herança
+Apesar de muito popular antigamente, o uso de heranças pode acabar acarretando em problemas de manutenção e evolução das classes de um sistema. Para exemplificar, agora será criado uma classe Turma:
+```c++
+#include <string>
+#include <vector>
+#include "materia.hpp"
+#include "aluno.hpp"
+
+using namespace std;
+
+class Turma : public Materia {
+    vector<Aluno> alunos;
+    // ...
+public:
+    //métodos
+};
+```
+Neste exemplo, o uso da herança não é necessariamente errado, mas segundo o princípio abordado, é preferível utilizar da sseguinte solução:
+
+```c++
+#include <string>
+#include <vector>
+#include "materia.hpp"
+#include "aluno.hpp"
+
+using namespace std;
+
+class Turma {
+    Materia materia;
+    vector<Aluno> alunos;
+    // ...
+public:
+    //métodos
+};
+```
+fonte:[src/turma.hpp](src/turma.hpp)
+
+Dessa forma, a relação entre as classes não é estática e é muito mais flexível do que se fosse utilizado a herança.
+
 
 ## Princípio de Segregação de Interfaces
 
